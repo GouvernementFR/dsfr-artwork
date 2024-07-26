@@ -1,0 +1,60 @@
+<svg version="2.0" width="80px" height="80px" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" >
+    <!-- qualification and accessibility data -->
+    <title>Mairie</title>
+    <desc>texte alternatif mairie</desc>
+    <metadata>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dsfr="https://www.systeme-de-design.gouv.fr">
+            <rdf:Description rdf:about="">
+                <dc:title>Mairie</dc:title>
+                <dc:description>texte alternatif pictogramme</dc:description>
+                <dc:subject>keywords,keywords,keywords,keywords</dc:subject>
+                <dc:publisher>Service d'Information du Gouvernement &lt;maxime.beaugrand@pm.gouv.fr&gt;</dc:publisher>
+                <dc:creator>Ministère des armées</dc:creator>
+                <dc:contributor>Jane Doe</dc:contributor>
+                <dc:type>Image</dc:type>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:identifier>http://</dc:identifier>
+                <dc:language>fr</dc:language>
+                <dc:relation>https://www.systeme-de-design.gouv.fr</dc:relation>
+                <dc:coverage>France</dc:coverage>
+                <dc:rights>CC BY 4.0</dc:rights>
+                <dsfr:category>buildings</dsfr:category>
+                <dsfr:themes>Theme,Theme,Theme</dsfr:themes>
+                <dsfr:falc>true</dsfr:falc>
+                <dsfr:published>2024-02-01</dsfr:published>
+                <dsfr:updated>2024-06-01</dsfr:updated>
+            </rdf:Description>
+        </rdf:RDF>
+    </metadata>
+    <!-- default style when integrated as image -->
+    <style>
+        path {
+            fill: none;
+            stroke-linecap: round;
+            stroke-width: 2;
+        }
+        #decorative {
+            stroke: #ECECFF;
+        }
+        #minor {
+            stroke: #E1000F;
+        }
+        #major {
+            stroke: #000091;
+        }
+    </style>
+    <!-- extended stylesheet with accents and schemes -->
+    <link xmlns="http://www.w3.org/1999/xhtml" href="../pictogram.css" type="text/css" rel="stylesheet" />
+    <!-- paths as stroke -->
+    <g id="decorative">
+        <path d="M61,5L61,5 M27,77L27,77 M57,77L57,77"/>
+    </g>
+    <g id="minor">
+        <path d="M44 10V14M13 35H19M13 39H19M25 35H31M25 39H31M49 35H55M49 39H55M61 35H67M61 39H67M40 35C38.895 35 38 35.895 38 37C38 38.105 38.895 39 40 39C41.105 39 42 38.105 42 37C42 35.895 41.105 35 40 35Z"/>
+    </g>
+    <g id="major">
+        <path d="M17 27V21H53M57 21H59M3 27H40 M40 27 H77M35 45H45M29 65H51M7 69H21V49M47 65V49H33V65M25 69H69M69 69V49M40 10V14M40 17V21M63 21V27M7 31V65M11 49V69M15 45V61M25 45V65M55 45V65M59 49V61M65 45V65M73 31V69M40 55V65"/>
+    </g>
+    <!-- javascript extending functionalities for smart pictogram -->
+    <script href="../pictogram.js" type="text/javascript" />
+</svg>

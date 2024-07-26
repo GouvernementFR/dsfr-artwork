@@ -1,0 +1,15 @@
+metadata:
+  title: Mairie
+  description: Texte alternatif du pictogramme
+  keywords: keywords,keywords,keywords
+  creator: Entité créatrice du pictogramme
+  contributor: designer du pictogramme
+  category: buildings
+  themes: theme,theme,theme
+  falc: true
+  published: 2020-01-01
+  updated: 2020-01-01
+svg:
+  major: M17 27V21H53M57 21H59M3 27H40 M40 27 H77M35 45H45M29 65H51M7 69H21V49M47 65V49H33V65M25 69H69M69 69V49M40 10V14M40 17V21M63 21V27M7 31V65M11 49V69M15 45V61M25 45V65M55 45V65M59 49V61M65 45V65M73 31V69M40 55V65
+  minor: M44 10V14M13 35H19M13 39H19M25 35H31M25 39H31M49 35H55M49 39H55M61 35H67M61 39H67M40 35C38.895 35 38 35.895 38 37C38 38.105 38.895 39 40 39C41.105 39 42 38.105 42 37C42 35.895 41.105 35 40 35Z
+  decorative: M61 5L61 5M27 77L27 77M57 77L57 77

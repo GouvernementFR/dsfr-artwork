@@ -1,0 +1,122 @@
+:root {
+    --stroke-width: 2;
+}
+
+#major {
+    stroke: #000091;
+}
+
+[data-fr-theme="dark"] #major {
+    stroke: #999AFF;
+}
+
+#minor {
+    stroke: #f03841;
+}
+
+[data-fr-theme="dark"] #minor {
+    stroke: #ffa9a2;
+}
+
+[data-fr-accent="orange"] #minor {
+    stroke: #d25e00;
+}
+
+[data-fr-accent="orange"][data-fr-theme="dark"] #minor {
+    stroke: #ffac71;
+}
+
+[data-fr-accent="yellow"] #minor {
+    stroke: #a97700;
+}
+
+[data-fr-accent="yellow"][data-fr-theme="dark"] #minor {
+    stroke: #e1ba6b;
+}
+
+[data-fr-accent="lime"] #minor {
+    stroke: #7e8700;
+}
+
+[data-fr-accent="lime"][data-fr-theme="dark"] #minor {
+    stroke: #e9ca8d;
+}
+
+[data-fr-accent="green"] #minor {
+    stroke: #009450;
+}
+
+[data-fr-accent="green"][data-fr-theme="dark"] #minor {
+    stroke: #9acc99;
+}
+
+[data-fr-accent="teal"] #minor {
+    stroke: #009274;
+}
+
+[data-fr-accent="teal"][data-fr-theme="dark"] #minor {
+    stroke: #7ccfb7;
+}
+
+[data-fr-accent="cyan"] #minor {
+    stroke: #008e9b;
+}
+
+[data-fr-accent="cyan"][data-fr-theme="dark"] #minor {
+    stroke: #72cdd6;
+}
+
+[data-fr-accent="azure"] #minor {
+    stroke: #0088c6;
+}
+
+[data-fr-accent="azure"][data-fr-theme="dark"] #minor {
+    stroke: #83c8ee;
+}
+
+[data-fr-accent="blue"] #minor {
+    stroke: #6a74ed;
+}
+
+[data-fr-accent="blue"][data-fr-theme="dark"] #minor {
+    stroke: #b5baff;
+}
+
+[data-fr-accent="violet"] #minor {
+    stroke: #9e68d0;
+}
+
+[data-fr-accent="violet"][data-fr-theme="dark"] #minor {
+    stroke: #c4b7f5;
+}
+
+[data-fr-accent="purple"] #minor {
+    stroke: #bb59c5;
+}
+
+[data-fr-accent="purple"][data-fr-theme="dark"] #minor {
+    stroke: #dfafe3;
+}
+
+[data-fr-accent="magenta"] #minor {
+    stroke: #d74d8f;
+}
+
+[data-fr-accent="magenta"][data-fr-theme="dark"] #minor {
+    stroke: #f1acc7;
+}
+
+path {
+    stroke-dashoffset: 46;
+    stroke-dasharray: 46;
+    transition: stroke-dashoffset 0.5s ease-out;
+    stroke-width: var(--stroke-width);
+}
+
+[data-fr-display] path {
+    transition-delay: 0.2s;
+}
+
+[data-fr-display="true"] path {
+    stroke-dashoffset: 0;
+}

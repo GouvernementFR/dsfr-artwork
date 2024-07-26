@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POC</title>
+    <script>
+        const data = {
+            theme: 'light',
+            scheme: 'system'
+        };
+        localStorage.setItem('dsfr', JSON.stringify(data));
+        let isLight = true;
+        let isShown = true;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const show = document.querySelector('#show');
+
+            show.addEventListener('click', () => {
+                isShown = !isShown;
+                const objects = document.querySelectorAll('object');
+                objects.forEach((object) => {
+                    object.contentDocument.querySelectorAll('path').forEach((path) => {
+                        path.style.strokeDashoffset = isShown ? '0' : '75';
+                    });
+                });
+            });
+
+            const theme = document.querySelector('#theme');
+            theme.addEventListener('click', () => {
+                isLight = !isLight;
+                const theme = isLight ? 'light' : 'dark';
+                document.body.style.backgroundColor = isLight ? '#fff' : '#161616';
+                const data = JSON.parse(localStorage.getItem('dsfr'));
+                data.theme = theme;
+                localStorage.setItem('dsfr', JSON.stringify(data));
+            });
+
+            const size = document.querySelector('#size');
+            size.addEventListener('click', () => {
+                const data = JSON.parse(localStorage.getItem('dsfr'));
+                data.autoSizing = !data.autoSizing;
+                localStorage.setItem('dsfr', JSON.stringify(data));
+            });
+        });
+
+
+
+    </script>
+    <style>
+        :root {
+            background-color: #ccc;
+            /*
+            --icon-left: url("../icons/system/checkbox-circle-line.svg");
+            --icon-right: url("../icons/system/arrow-down-s-line.svg");
+
+            --icon-left-position: 0 0;
+            --icon-right-position: right center;
+             */
+
+            --mask-left: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z' /></svg>");
+            --mask-right: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='m12 13.172 4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222l4.95 4.95Z' /></svg>");
+
+            --clip-left: "M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z";
+            --clip-right: "m12 13.172 4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222l4.95 4.95Z";
+
+            --underline: linear-gradient(90deg, #000091 0%, #000091 100%);
+
+
+            --underline-position: 0 100%;
+
+            --icon-size: 16px;
+            --underline-size: 100% 2px;
+        }
+
+        a {
+            color: #000091;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 1.5em;
+        }
+
+        button {
+            appearance: none;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            background-color: #000091;
+            color: #fff;
+            padding: 8px;
+            text-transform: uppercase;
+            --underline: none;
+        }
+
+        .mask {
+            background-image: linear-gradient(90deg, currentColor, currentColor), linear-gradient(90deg, currentColor, currentColor), var(--underline);
+            background-position: 0 50%, 100% 50%, var(--underline-position);
+            background-size: var(--icon-size) var(--icon-size), var(--icon-size) var(--icon-size), var(--underline-size);
+            background-repeat: no-repeat;
+            mask-image: linear-gradient(90deg, #fff, #fff), linear-gradient(90deg, #fff, #fff), var(--mask-left), var(--mask-right);
+            mask-position: 0 100%, 20px 0, 0 50%, 100% 50%;
+            mask-size: 100% 2px, calc(100% - 40px) 100%, var(--icon-size) var(--icon-size), var(--icon-size) var(--icon-size);
+            mask-repeat: no-repeat;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .clip::before,
+        .clip::after {
+            content: '';
+            display: inline-block;
+            background-color: currentColor;
+            width: 24px;
+            height: 24px;
+            margin-bottom: calc(var(--icon-size) - 24px);
+            transform: scale(0.6666);
+            transform-origin: 0 0;
+        }
+
+        .clip::before {
+            clip-path: path(var(--clip-left));
+            margin-right: calc(var(--icon-size) - 20px);
+
+        }
+
+        .clip::after {
+            clip-path: path(var(--clip-right));
+            margin-right: calc(var(--icon-size) - 24px);
+            margin-left: 4px;
+        }
+
+        .object path {
+            fill: currentColor;
+        }
+
+        .svg svg {
+            width: 24px;
+            height: 24px;
+            margin-right: -4px;
+            margin-bottom: -8px;
+            transform: scale(calc(2 / 3));
+            transform-origin: 0 0;
+        }
+
+        .svg use {
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            transition: stroke-dashoffset 0.6s;
+            stroke-dasharray: 57;
+            stroke-dashoffset: 57;
+        }
+
+        .svg:hover use {
+            stroke-dashoffset: 0;
+        }
+    </style>
+</head>
+<body>
+<h4>Icons</h4>
+
+<div style="margin-bottom: 20px">
+    <a href="#" class="mask" >libellé lien</a>
+</div>
+<div style="margin-bottom: 20px">
+    <button type="button" class="mask">libellé bouton</button>
+</div>
+<div style="margin-bottom: 20px">
+    <a href="#" class="clip">libellé lien</a>
+</div>
+<div style="margin-bottom: 20px">
+    <button type="button" class="clip">libellé bouton</button>
+</div>
+<div style="margin-bottom: 20px">
+    <button type="button" class="svg"><svg><use href="../icons/system/checkbox-circle-stroke.svg#icon" /></svg>libellé bouton</button>
+</div>
+
+<h4>Pictograms</h4>
+<button id="show">Show pictograms</button>
+<button id="theme">Toggle theme</button>
+    <div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="orange" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="yellow" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="lime" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="green" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="teal" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="cyan" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="azure" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="blue" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="violet" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="purple" data-fr-display="auto" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" data-fr-accent="magenta" data-fr-display="auto"></object>
+    </div>
+
+    <button id="size">Toggle size</button>
+
+    <div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="16px" height="16px" data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="32px" height="32px"  data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="48px" height="48px"  data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="80px" height="80px"  data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="160px" height="160px"  data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="240px" height="240px"  data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="320px" height="320px"  data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="480px" height="480px"  data-fr-display="auto"></object>
+        <div class="separator"></div>
+        <object data="../pictograms/buildings/city-hall-border.svg" type="image/svg+xml" width="960px" height="960px" data-fr-display="auto"></object>
+    </div>
+
+
+
+
+</body>
+</html>
