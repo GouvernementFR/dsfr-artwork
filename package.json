@@ -1,7 +1,7 @@
 {
   "name": "@gouvfr/dsfr-artwork",
   "version": "0.0.0",
-  "description": "outils internes transverses pour les projets DSFR",
+  "description": "Librairie illustrative du DSFR",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
   "license": "SEE LICENSE IN LICENSE.md",
   "type": "module",

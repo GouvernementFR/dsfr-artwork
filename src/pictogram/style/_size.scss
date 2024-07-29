@@ -1,0 +1,7 @@
+:root {
+  --stroke-width: 2;
+}
+
+path {
+  stroke-width: var(--stroke-width);
+}

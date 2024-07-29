@@ -1,0 +1,13 @@
+path {
+  stroke-dashoffset: var(--stroke-length);
+  stroke-dasharray: var(--stroke-length);
+  transition: stroke-dashoffset 0.5s ease-out;
+}
+
+[data-fr-display] path {
+  transition-delay: 0.2s;
+}
+
+[data-fr-display="true"] path {
+  stroke-dashoffset: 0;
+}
